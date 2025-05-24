@@ -1,0 +1,147 @@
+// f(i, 0, N)
+#define f(x, y, z) for (int x = (y), __ = z; x < __; ++x)
+// _rep(i, a, b) 
+#define _rep(i, a, b) for(int i = (a); i <= (b); i++)
+
+#define DEBUG
+#ifdef
+#else
+#endif
+
+vector<int> data(10);
+
+for(int i = 0; i < data; i++)
+	cout << data[i] << endl;
+for(vector<int>::iterator iter = data.begin(); iter != data.end(); iter++)
+	cout << *iter << endl;
+
+bool cmp(const int& e, const int& val) {
+	return e >= val;
+}
+
+template <class ForwardIterator, class T>
+ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val)
+int main() {
+	vector<int> v = {30, 28} // 任意
+	sort(v.begin(), v.end());
+	vector<int>::iterator it = lower_bound(v.begin(), v.end(), 20, cmp);
+
+}
+
+lower_bound(begin, end, val, less<type>())
+			上述代码中加入了 less<type>() 自定义比较函数：适用于从小到大排序的有序序列，从数组
+		/ 容器的 beign 位置起，到 end
+	- 1 位置结束，查找第一个 大于等于 val 的数字 
+
+lower_bound(begin, end, val, greater<type>()) 上述代码中加入了 greater<type>() 自定义比较函数：适用于从大到小排序的有序序列，从数组 / 容器的 beign 位置起，到 end - 1 位置结束，查找第一个 小于等于 val 的数字
+
+int lower_bound(vector<int>) &nums, int x) {
+	int left = 0;
+	int right = nums.size() - 1;
+	while(left <= right) {
+		int mid = left + (right - left) / 2;
+		if(x > nums[mid]) {
+			left = mid + 1;
+		}
+		else {
+			right = mid - 1;
+		}
+	}
+	return left;
+}
+
+int upper_bound(vector<int> &nums, int x) {
+	int left = 0;
+	int right = nums.size() - 1;
+	while(left <= right) {
+		int mid = left + (right - left) / 2;
+		if(x >= nums[mid]) {
+			left = mid - 1;
+		}
+		else {
+			right = mid - 1;
+		}
+	}
+	return left;
+}
+
+struct node {
+	int x, y;
+	bool operator < (const node& a) const {
+		return x < a.x;
+	}
+}
+
+void msort(int b, int e) // 归并排序
+{
+	if (b == e)
+		return;
+	int mid = (b + e) / 2, i = b, j = mid + 1, k = b;
+	msort(b, mid), msort(mid + 1, e);
+	while (i <= mid && j <= e)
+		if (a[i] <= a[j])
+			c[k++] = a[i++];
+		else
+			c[k++] = a[j++], ans += mid - i + 1; // 统计答案
+	while (i <= mid)
+		c[k++] = a[i++];
+	while (j <= e)
+		c[k++] = a[j++];
+	for (int l = b; l <= e; l++)
+		a[l] = c[l];
+}
+//二分
+while(l < r) {
+	mid = (l + r + 1) / 2;
+	if(check(mid)) l = mid;
+	else x = mid - 1;
+}
+
+//声明二维数组
+vector<vector<int>> a(1,vector<int>)(size2, 0);
+
+//向数组中填充元素i(vecvtor<int> a)
+a.push_back(i);
+
+//Wrong things
+vector<int> a;
+for(int i = 0; i < 10; i++) {
+	a[i] = i; // 下标只能获取已经存在的元素
+}
+
+//reverse, sort, copy, find
+sort(a.begin(), a.end());
+reverse(a.begin(), a.end());
+copy(a.begin(), a.end(), b.begin()+1);
+find(a.begin(), a.end(), 10);
+
+int partition(vector<int> &arr, int low, int high) {
+	int pivot = arr[high];
+	int i = low - 1;
+	for(int j = low; j < high; j++) {
+		if(arr[j] <= pivot) {
+			i++;
+			swap(arr[i], arr[j]);
+		}
+	}
+	swap(arr[i+1], arr[high]);
+	return i+1;
+}
+
+void quicksort(vector<int> &arr, int low, int high) {
+	if(low < high) {
+		int pivotIndex = partition(arr, low, high);
+		quicksort(arr,low,pivotIndex - 1);
+		quicksort(arr, pivotIndex + 1, high);
+	}
+}
+
+int main() {
+	vector<int> arr = {3,6,...};
+	quicksort(arr, 0, arr.size() - 1);
+	for(int num:arr) {
+		cout << num << " ";
+	}
+	cout << endl;
+	return 0;
+}
